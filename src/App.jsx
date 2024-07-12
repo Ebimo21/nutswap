@@ -6,12 +6,19 @@ import PercentBadge from './components/percent_badge'
 import Pricing from './components/pricing'
 import ConnectWallet from './components/button/connectWallet'
 import Chart from './components/mini-chart'
+import CustomSelect from './components/select-drop-down'
+import Settings from './components/settings'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [ settingsOpen, setSettingsOpen ] = useState(false);
+
+  const stopPropagation = (e) => {e.stopPropagation()};
+
+  const handleOpenSettings =()=> setSettingsOpen(!settingsOpen);
 
   return (
-    <div className='py-7 px-4 bg-[#0D0904] font-Urbanist'>
+    <div className='py-7 px-4 bg-[#121111e6] font-Urbanist'>
       <div>
 
         <div className='flex items-center justify-between'>
@@ -27,7 +34,7 @@ function App() {
       <div className='mt-12 mx-4'>
 
       <div className='flex gap-2 items-center justify-end'>
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_1_570)">
         <path d="M19.1666 3.33337V8.33337H14.1666" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M0.833374 16.6666V11.6666H5.83337" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -40,7 +47,7 @@ function App() {
         </defs>
       </svg>
 
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg onClick={handleOpenSettings} width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_1_574)">
         <path d="M3.33337 17.5V11.6666" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M3.33337 8.33333V2.5" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -63,10 +70,7 @@ function App() {
       <div className='bg-[#574c374b] p-4 mt-4 rounded-3xl border-[3px] border-[#FFFF6C] border-solid'>
         <form>
           <div>
-            <select className='bg-transparent font-bold text-white'>
-              <option className='flex'> <img src='/logo.png'/> TON</option>
-            </select>
-
+            <CustomSelect preset="TON" src="/logo.png" />
             <input type='text' className='w-full p-4 bg-[#3B3626] rounded-lg' />
           </div>
 
@@ -81,11 +85,8 @@ function App() {
           </div>
 
           <div>
-            <select className='bg-transparent font-bold text-white'>
-                <option className='flex'> <img src='/logo.png'/> NUT</option>
-              </select>
-
-              <input type='text' className='w-full p-4 bg-[#3B3626] rounded-lg' />
+            <CustomSelect preset="NUT" src="nuts.png"/>
+            <input type='text' className='w-full p-4 bg-[#3B3626] rounded-lg' />
           </div>
           <div className='flex items-center justify-center gap-5 my-4'>
             <PercentBadge amount={"25%"} />
@@ -100,8 +101,15 @@ function App() {
       </div>
 
       <Chart />
+      { settingsOpen && (
+        <div onClick={handleOpenSettings} className='absolute top-0 left-0  w-full h-screen bg-[rgba(255,255,108,0.5)]'>
+          {/* <div>How</div> */}
+          <Settings stopFn={stopPropagation} />
+        </div>
+        )}
+      {/* <hr className='my-10' /> */}
 
-
+      
 
       </div>
     </div>
