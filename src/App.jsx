@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import PercentBadge from './components/percent_badge'
 import Pricing from './components/pricing'
@@ -8,26 +6,65 @@ import ConnectWallet from './components/button/connectWallet'
 import Chart from './components/mini-chart'
 import CustomSelect from './components/select-drop-down'
 import Settings from './components/settings'
+import { TonConnectButton } from '@tonconnect/ui-react';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [ settingsOpen, setSettingsOpen ] = useState(false);
+
+  const tokens = [
+    {
+      name: "TON",
+    icon: "/logo.png"
+    },
+    {
+      name: "NUT",
+    icon: "/nuts.png"
+    },
+    {
+      name: "ANTON",
+    icon: "/logo.png"
+    },
+    {
+      name: "FISH",
+    icon: "/nuts.png"
+    },
+    {
+      name: "TPET",
+    icon: "/logo.png"
+    }
+  ]
+  const [ token1, setToken1 ] = useState(tokens[0]);
+  const [ token2, setToken2 ] = useState(tokens[1]);
+  const [ token1Amount, setToken1Amount] = useState(0);
+  const [ token2Amount, setToken2Amount] = useState(0);
+
+  function handleSwitchToken(){
+    const tempToken1 = token1;
+    setToken1(token2);
+    setToken2(tempToken1);
+
+    const temptToken1Amount = token1Amount;
+    setToken1Amount(token2Amount);
+    setToken2Amount(temptToken1Amount)
+  }
 
   const stopPropagation = (e) => {e.stopPropagation()};
 
   const handleOpenSettings =()=> setSettingsOpen(!settingsOpen);
 
   return (
-    <div className='py-7 px-4 bg-[#121111e6] font-Urbanist'>
+    <div className='flex bg-[#121111e6]  items-center justify-center'>
+      <div className='py-7 px-4  font-Urbanist max-w-md'>
       <div>
 
         <div className='flex items-center justify-between'>
           <img src='/Nutswap_logo_white_coin 1.png' height="16px" width="138px" alt='logo' />
           
-          <div className='py-[10px] px-3 font-medium text-white flex justify-center items-center gap-2 border-solid border-[0.1px] border-[#FFFF6C] rounded-2xl'>
-            <img src='/logo.png' />
-            <span>Connect</span>
-          </div>
+          {/* <TonConnectButton className='py-[10px] px-3 font-medium text-white flex justify-center items-center gap-2 border-solid border-[0.1px] border-[#FFFF6C] rounded-2xl cursor-pointer'> */}
+          <TonConnectButton  className=''>
+            {/* <img src='/logo.png' /> */}
+            {/* <span>Connect</span> */}
+          </TonConnectButton>
         </div>
       </div>
 
@@ -70,29 +107,29 @@ function App() {
       <div className='bg-[#574c374b] p-4 mt-4 rounded-3xl border-[3px] border-[#FFFF6C] border-solid'>
         <form>
           <div>
-            <CustomSelect preset="TON" src="/logo.png" />
-            <input type='text' className='w-full p-4 bg-[#3B3626] rounded-lg' />
+            <CustomSelect selectedToken={token1} tokens={tokens} setSelectedToken={setToken1} />
+            <input type='text' value={token1Amount} onChange={(e)=>setToken1Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
           </div>
 
-          <div className='flex items-center justify-center mt-6'>
-            <div className='bg-[#574C37] rounded-full'>
+          <div  className='flex items-center justify-center mt-6'>
+            <span onClick={()=>handleSwitchToken()} className='bg-[#574C37] rounded-full inline-block'>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7 13L12 18L17 13" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M7 6L12 11L17 6" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </div>
+            </span>
 
           </div>
 
           <div>
-            <CustomSelect preset="NUT" src="nuts.png"/>
-            <input type='text' className='w-full p-4 bg-[#3B3626] rounded-lg' />
+            <CustomSelect selectedToken={token2} tokens={tokens} setSelectedToken={setToken2}/>
+            <input type='text' value={token2Amount} onChange={(e)=>setToken2Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
           </div>
-          <div className='flex items-center justify-center gap-5 my-4'>
-            <PercentBadge amount={"25%"} />
-            <PercentBadge amount={"50%"} />
-            <PercentBadge amount={"75%"} />
-            <PercentBadge amount={"MAX"} />
+          <div className='flex items-center justify-center gap-2 my-4'>
+            <PercentBadge style="w-14" amount={"25%"} />
+            <PercentBadge style="w-14" amount={"50%"} />
+            <PercentBadge style="w-14" amount={"75%"} />
+            <PercentBadge style="w-14" amount={"MAX"} />
           </div>
         </form>
         
@@ -103,15 +140,15 @@ function App() {
       <Chart />
       { settingsOpen && (
         <div onClick={handleOpenSettings} className='absolute top-0 left-0  w-full h-screen bg-[rgba(255,255,108,0.5)]'>
-          {/* <div>How</div> */}
-          <Settings stopFn={stopPropagation} />
+          <Settings stopFn={stopPropagation} closeSettings={setSettingsOpen} />
         </div>
         )}
-      {/* <hr className='my-10' /> */}
+      
 
       
 
       </div>
+    </div>
     </div>
   )
 }
