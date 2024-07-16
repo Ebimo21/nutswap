@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import PercentBadge from './components/percent_badge'
 import Pricing from './components/pricing'
@@ -50,10 +50,18 @@ function App() {
 
   const stopPropagation = (e) => {e.stopPropagation()};
 
-  const handleOpenSettings =()=> setSettingsOpen(!settingsOpen);
+  const handleOpenSettings =()=> { setSettingsOpen(!settingsOpen) };
+
+  useEffect( ()=>{
+    if(settingsOpen){
+      document.body.style.overflow = "hidden";
+    }else{
+      document.body.style.overflow = "auto";
+    }
+  }, [ settingsOpen ])
 
   return (
-    <div className='flex bg-[#121111e6]  items-center justify-center'>
+    <div className=' flex bg-[#121111e6]  items-center justify-center'>
       <div className='py-7 px-4  font-Urbanist max-w-md'>
       <div>
 
