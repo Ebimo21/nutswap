@@ -32,7 +32,8 @@ function App() {
       name: "TPET",
     icon: "/logo.png"
     }
-  ]
+  ];
+  
   const [ token1, setToken1 ] = useState(tokens[0]);
   const [ token2, setToken2 ] = useState(tokens[1]);
   const [ token1Amount, setToken1Amount] = useState(0);
@@ -61,7 +62,7 @@ function App() {
   }, [ settingsOpen ])
 
   return (
-    <div className=' flex bg-[#121111e6]  items-center justify-center'>
+    <div className=' flex bg-nustwap-bg bg-[#0b0b0beb]  items-center justify-center'>
       <div className='py-7 px-4  font-Urbanist max-w-md'>
       <div>
 
@@ -79,7 +80,7 @@ function App() {
       <div className='mt-12 mx-4'>
 
       <div className='flex gap-2 items-center justify-end'>
-      <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className='a active:animate-spin' width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_1_570)">
         <path d="M19.1666 3.33337V8.33337H14.1666" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M0.833374 16.6666V11.6666H5.83337" stroke="#FFFF6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -147,14 +148,10 @@ function App() {
 
       <Chart />
       { settingsOpen && (
-        <div onClick={handleOpenSettings} className='absolute top-0 left-0  w-full h-screen bg-[rgba(255,255,108,0.5)]'>
-          <Settings stopFn={stopPropagation} closeSettings={setSettingsOpen} />
+        <div onClick={handleOpenSettings} className='absolute top-0   left-0  w-full h-screen bg-[rgba(255,255,108,0.9)]'>
+          <Settings cardOpen={settingsOpen} stopFn={stopPropagation} closeSettings={setSettingsOpen} />
         </div>
         )}
-      
-
-      
-
       </div>
     </div>
     </div>
