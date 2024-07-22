@@ -35,7 +35,7 @@ export default function Chart(){
         </div>
 
         <div>
-          <p className="text-[#9D9463] flex items-center justify-center mt-1 gap-2 text-[12px]">Built with Precision by <img src="/nutcoin.png" /></p>
+          <p className="text-[#9D9463] flex items-center justify-center mt-1 gap-2 text-[12px]">Built with Precision by <img src="/Nutcoin_logowithcoin_website.png" height={26} width={77} /></p>
         </div>
         </div>
     )

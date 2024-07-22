@@ -14,23 +14,28 @@ function App() {
   const tokens = [
     {
       name: "TON",
-    icon: "/logo.png"
+      icon: "/logo.png",
+      bal: 0.142
     },
     {
       name: "NUT",
-    icon: "/nuts.png"
+      icon: "/nuts.png",
+      bal: 0.1142
     },
     {
       name: "ANTON",
-    icon: "/logo.png"
+      icon: "/logo.png",
+      bal: 0.3142
     },
     {
       name: "FISH",
-    icon: "/nuts.png"
+      icon: "/nuts.png",
+      bal: 0.6142
     },
     {
       name: "TPET",
-    icon: "/logo.png"
+      icon: "/logo.png",
+      bal: 0.0142
     }
   ];
   
@@ -38,6 +43,8 @@ function App() {
   const [ token2, setToken2 ] = useState(tokens[1]);
   const [ token1Amount, setToken1Amount] = useState(0);
   const [ token2Amount, setToken2Amount] = useState(0);
+  const [ token1Balance, setToken1Balance ] = useState(token1.bal);
+  const [ token2Balance, setToken2Balance ] = useState(token2.bal);
 
   function handleSwitchToken(){
     const tempToken1 = token1;
@@ -46,7 +53,11 @@ function App() {
 
     const temptToken1Amount = token1Amount;
     setToken1Amount(token2Amount);
-    setToken2Amount(temptToken1Amount)
+    setToken2Amount(temptToken1Amount);
+
+    const tempToken1Balance = token1Balance;
+    setToken1Balance(token2Balance);
+    setToken2Balance(tempToken1Balance);
   }
 
   const stopPropagation = (e) => {e.stopPropagation()};
@@ -67,7 +78,7 @@ function App() {
       <div>
 
         <div className='flex items-center justify-between'>
-          <img src='/Nutswap_logo_white_coin 1.png' height="16px" width="138px" alt='logo' />
+          <img src='/Nutswap_logo_white_coin 1.png' height="19.2px" width="161.6px" alt='logo' />
           
           {/* <TonConnectButton className='py-[10px] px-3 font-medium text-white flex justify-center items-center gap-2 border-solid border-[0.1px] border-[#FFFF6C] rounded-2xl cursor-pointer'> */}
           <TonConnectButton  className=''>
@@ -88,7 +99,7 @@ function App() {
         </g>
         <defs>
         <clipPath id="clip0_1_570">
-        <rect width="20" height="20" fill="white"/>
+          <rect width="20" height="20" fill="white"/>
         </clipPath>
         </defs>
       </svg>
@@ -116,7 +127,7 @@ function App() {
       <div className='bg-[#574c374b] p-4 mt-4 rounded-3xl border-[3px] border-[#FFFF6C] border-solid'>
         <form>
           <div>
-            <CustomSelect selectedToken={token1} tokens={tokens} setSelectedToken={setToken1} />
+            <CustomSelect setTokenBal={setToken1Balance} tokenBal={token1Balance} selectedToken={token1} tokens={tokens} setSelectedToken={setToken1} />
             <input type='text' value={token1Amount} onChange={(e)=>setToken1Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
           </div>
 
@@ -131,7 +142,7 @@ function App() {
           </div>
 
           <div>
-            <CustomSelect selectedToken={token2} tokens={tokens} setSelectedToken={setToken2}/>
+            <CustomSelect setTokenBal={setToken2Balance} tokenBal={token2Balance} selectedToken={token2} tokens={tokens} setSelectedToken={setToken2}/>
             <input type='text' value={token2Amount} onChange={(e)=>setToken2Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
           </div>
           <div className='flex items-center justify-center gap-2 my-4'>
@@ -148,7 +159,7 @@ function App() {
 
       <Chart />
       { settingsOpen && (
-        <div onClick={handleOpenSettings} className='absolute top-0   left-0  w-full h-screen bg-[rgba(255,255,108,0.9)]'>
+        <div onClick={handleOpenSettings} className='absolute top-0   left-0  w-full h-screen bg-[rgba(0,0,0,0.77)]'>
           <Settings cardOpen={settingsOpen} stopFn={stopPropagation} closeSettings={setSettingsOpen} />
         </div>
         )}

@@ -18,7 +18,7 @@ export default function Settings ({ stopFn, closeSettings, cardOpen }){
             <SlippageBadge fn={handleSetSlippage} style={` ${slippage == 10 ? "bg-white text-black": ""} w-20 text-sm py-2 bg-transparent border border-solid border-[#ffff6c]`} amount={10} />
             <SlippageInputBadge 
               setSlippage={handleSetSlippage} 
-              style={` ${slippage == "49%" ? "bg-white text-black": ""} w-full bg-transparent border border-solid border-[#ffff6c] text-[#ffff6c] text-xl `} 
+              style={` ${slippage == "Custom %" ? "bg-white text-black": ""} w-full bg-transparent border border-solid border-[#ffff6c] text-[#ffff6c] text-xl `} 
               slippage={slippage} />
         </div>
 
