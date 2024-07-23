@@ -3,7 +3,7 @@ import SlippageBadge from "./slippage_badge";
 import SlippageInputBadge from "./slippage_input_badge";
 
 export default function Settings ({ stopFn, closeSettings, cardOpen }){
-  const [ slippage, setSlippage ] = useState(0.2);
+  const [ slippage, setSlippage ] = useState();
   const handleSetSlippage = (val) => { setSlippage(val) };
 
     return(
@@ -13,12 +13,12 @@ export default function Settings ({ stopFn, closeSettings, cardOpen }){
         <p className="text-sm text-[#ffffff7b]">Your transaction will revert if the price changes unfavourably by more than this percentage</p>
 
         <div className="mt-5 flex flex-wrap items-center justify-between gap-x-2 gap-y-4">
-            <SlippageBadge fn={handleSetSlippage} style={` ${slippage == 1 ? "bg-white text-black": ""} w-20 text-sm py-2 bg-transparent border border-solid border-[#ffff6c]`} amount={1} />
-            <SlippageBadge fn={handleSetSlippage} id="five" style={` ${slippage == 5 ? "bg-white text-black": ""} w-20 text-sm py-2 bg-transparent border border-solid border-[#ffff6c]`} amount={5} />
-            <SlippageBadge fn={handleSetSlippage} style={` ${slippage == 10 ? "bg-white text-black": ""} w-20 text-sm py-2 bg-transparent border border-solid border-[#ffff6c]`} amount={10} />
+            <SlippageBadge fn={handleSetSlippage} style={` ${slippage == 1 ? "bg-white text-black": "bg-[rgba(50,50,50,0.82)]"} w-20 text-sm py-2 `} amount={1} />
+            <SlippageBadge fn={handleSetSlippage} id="five" style={` ${slippage == 5 ? "bg-white text-black": "bg-[rgba(50,50,50,0.82)]"} w-20 text-sm py-2 bg-transparent`} amount={5} />
+            <SlippageBadge fn={handleSetSlippage} style={` ${slippage == 10 ? "bg-white text-black": "bg-[rgba(50,50,50,0.82)]"} w-20 text-sm py-2 bg-transparent`} amount={10} />
             <SlippageInputBadge 
               setSlippage={handleSetSlippage} 
-              style={` ${slippage == "Custom %" ? "bg-white text-black": ""} w-full bg-transparent border border-solid border-[#ffff6c] text-[#ffff6c] text-xl `} 
+              style={` ${slippage == "Custom %" ? "bg-white text-black": "bg-[rgba(50,50,50,0.82)]"} w-full bg-transparent text-[#ffff6c] text-xl `} 
               slippage={slippage} />
         </div>
 

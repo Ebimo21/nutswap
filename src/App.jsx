@@ -64,6 +64,11 @@ function App() {
 
   const handleOpenSettings =()=> { setSettingsOpen(!settingsOpen) };
 
+  const handleInputPercent = (percent) =>{
+    const amount = token1Balance * (percent / 100 );
+    setToken1Amount(amount.toFixed(4));
+  }
+
   useEffect( ()=>{
     if(settingsOpen){
       document.body.style.overflow = "hidden";
@@ -145,11 +150,11 @@ function App() {
             <CustomSelect setTokenBal={setToken2Balance} tokenBal={token2Balance} selectedToken={token2} tokens={tokens} setSelectedToken={setToken2}/>
             <input type='text' value={token2Amount} onChange={(e)=>setToken2Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
           </div>
-          <div className='flex items-center justify-center gap-2 my-4'>
-            <PercentBadge style="w-14" amount={"25%"} />
-            <PercentBadge style="w-14" amount={"50%"} />
-            <PercentBadge style="w-14" amount={"75%"} />
-            <PercentBadge style="w-14" amount={"MAX"} />
+          <div className='flex flex-wrap items-center justify-between text-base gap-x-2 gap-y-4 my-4'>
+            <PercentBadge inputPercent={handleInputPercent} style="w-20 py-2" display={"25%"} amount={25} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-20 py-2" display={"50%"} amount={50} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-20 py-2" display={"75%"} amount={75} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-full py-2" display={"MAX"} amount={100} />
           </div>
         </form>
         

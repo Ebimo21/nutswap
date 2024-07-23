@@ -30,7 +30,7 @@ export default function CustomSelect({selectedToken, setSelectedToken, tokens, t
 <div>
                 </div>
                 </div>
-                  <div>Bal: {tokenBal}</div>
+                  <div className="text-xs text-gray-500">Bal: {tokenBal}</div>
             </div>
 
             { dropDownOpen && (
