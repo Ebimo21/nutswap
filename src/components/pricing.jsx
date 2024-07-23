@@ -24,7 +24,7 @@ export default function Pricing({basePair = "TON", subPair = "DOGE"}){
             <PricingItem
                 title="Tx Fee"
                 value="0.2 - 0.05"
-                valueClx="bg-[#9D9463] px-[2px] py-[1px]"
+                valueClx="bg-[#9D9463] rounded-md px-[10px] py-[1px]"
                 />
         </div>
     )

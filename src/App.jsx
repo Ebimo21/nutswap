@@ -83,7 +83,7 @@ function App() {
       <div>
 
         <div className='flex items-center justify-between'>
-          <img src='/Nutswap_logo_white_coin 1.png' height="19.2px" width="161.6px" alt='logo' />
+          <img src='/Nutswap_logo.png' height="19.2px" width="161.6px" alt='logo' />
           
           {/* <TonConnectButton className='py-[10px] px-3 font-medium text-white flex justify-center items-center gap-2 border-solid border-[0.1px] border-[#FFFF6C] rounded-2xl cursor-pointer'> */}
           <TonConnectButton  className=''>
