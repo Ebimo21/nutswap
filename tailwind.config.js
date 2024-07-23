@@ -28,7 +28,7 @@ export default {
        },
 
       backgroundImage: {
-        "nustwap-bg": "url('/nustwap-bg.png')",
+        "nustwap-bg": "url('/nutswap-bg.png')",
       },
       fontFamily: {
         'Urbanist': ["Urbanist"]
