@@ -18,13 +18,13 @@ export default function Settings ({ stopFn, closeSettings, cardOpen }){
             <SlippageBadge fn={handleSetSlippage} style={` ${slippage == 10 ? "border-[rgba(255,255,108,0.5)] border text-[rgba(255,255,108,0.5)]": "border-2 border-[#1b1b1a]"} w-24 text-sm py-2 bg-transparent`} amount={10} />
             <SlippageInputBadge 
               setSlippage={handleSetSlippage} 
-              style={` ${slippage == "Custom %" ? "": ""} w-full text-[#ffff6c] text-xl `} 
+              style={` ${slippage == "Custom %" ? "": ""}  w-full text-[#ffff6c] text-xl `} 
               slippage={slippage} />
         </div>
 
         <div className="mt-10 mb-9 border-t-[0.01px] border-t-solid border-[rgba(255,255,108,0.4)]"></div>
         <div>
-          <button onClick={()=>closeSettings(prev =>!prev)} className='bg-[rgba(255,255,108,0.5)] block w-full text-center font-bold px-3 py-4 mb-8 rounded-xl uppercase'>Save</button>
+          <button onClick={()=>closeSettings(prev =>!prev)} className='bg-[rgba(255,255,108,0.5)] block w-full text-center font-bold px-3 py-4 mb-8 rounded-3xl uppercase'>Save</button>
         </div>
       </div>
     )

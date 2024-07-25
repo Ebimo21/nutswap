@@ -1,7 +1,7 @@
 export default function SlippageInputBadge({slippage, style, setSlippage}){
     
     return (
-        <div className={`${style} bg-[#1b1b1a] text-center p-1 rounded-lg font-bold flex items-center gap-0 justify-center`}>
+        <div className={`${style} bg-[#1b1b1a] text-center p-1 rounded-3xl font-bold flex items-center gap-0 justify-center`}>
             <input 
                 onClick={()=>fn(amount)}  
                 type="text" 

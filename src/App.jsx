@@ -93,7 +93,7 @@ function App() {
         </div>
       </div>
 
-      <div className='mt-12 mx-4'>
+      <div className='mt-12 mx-3'>
 
       <div className='flex gap-2 items-center justify-end'>
       <svg className='a active:animate-spin' width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +133,7 @@ function App() {
         <form>
           <div>
             <CustomSelect setTokenBal={setToken1Balance} tokenBal={token1Balance} selectedToken={token1} tokens={tokens} setSelectedToken={setToken1} />
-            <input type='text' value={token1Amount} onChange={(e)=>setToken1Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
+            <input type='text' value={token1Amount} onChange={(e)=>setToken1Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-2xl' />
           </div>
 
           <div  className='flex items-center justify-center mt-6'>
@@ -148,13 +148,13 @@ function App() {
 
           <div>
             <CustomSelect setTokenBal={setToken2Balance} tokenBal={token2Balance} selectedToken={token2} tokens={tokens} setSelectedToken={setToken2}/>
-            <input type='text' value={token2Amount} onChange={(e)=>setToken2Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-lg' />
+            <input type='text' value={token2Amount} onChange={(e)=>setToken2Amount(e.target.value)} className='w-full p-4 bg-[#3B3626] text-white rounded-2xl' />
           </div>
           <div className='flex flex-wrap items-center justify-between text-base gap-x-2 gap-y-4 my-4'>
-            <PercentBadge inputPercent={handleInputPercent} style="w-20 py-2" display={"25%"} amount={25} />
-            <PercentBadge inputPercent={handleInputPercent} style="w-20 py-2" display={"50%"} amount={50} />
-            <PercentBadge inputPercent={handleInputPercent} style="w-20 py-2" display={"75%"} amount={75} />
-            <PercentBadge inputPercent={handleInputPercent} style="w-full py-2" display={"MAX"} amount={100} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-14 py-2" display={"25%"} amount={25} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-14 py-2" display={"50%"} amount={50} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-14 py-2" display={"75%"} amount={75} />
+            <PercentBadge inputPercent={handleInputPercent} style="w-14 py-2" display={"MAX"} amount={100} />
           </div>
         </form>
         
